@@ -37,6 +37,11 @@ var taskFormHandler = function() {
         name: taskNameInput,
         type: taskTypeInput
     };
+    if (!taskNameInput || !taskTypeInput) {
+        alert("Fill out the task form, idiot!!!!");
+        return false;
+    }
+    formEl.reset();
 
     //send it as an argument to createTaskEl
     createTaskEl(taskDataObj);
