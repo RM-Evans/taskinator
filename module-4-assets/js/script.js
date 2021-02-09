@@ -191,6 +191,15 @@ var createTaskEl = function (taskDataObj) {
 
     //ADD ENTIRE LIST ITEM TO LIST
     tasksToDoEl.appendChild(listItemEl);
+    console.log(taskDataObj.status)
+
+    if (taskDataObj.status === "to do") {
+        tasksToDoEl.appendChild(listItemEl);
+    } else if (taskDataObj.status === "in progress") {
+        tasksInProgressEl.appendChild(listItemEl);
+    } else if (taskDataObj.status === "completed") {
+        tasksCompletedEl.appendChild(listItemEl);
+    }
     //console.dir(listItemEl);
 
     taskDataObj.id = taskIdCounter;
@@ -228,7 +237,7 @@ var createTaskActions = function (taskId) {
     //creating/assigning it
     actionContainerEl.appendChild(deleteButtonEl);
 
-    //dropdown
+    //change status dropdown
     var statusSelectE1 = document.createElement("select");
     statusSelectE1.className = "select-status";
     statusSelectE1.setAttribute("name", "status-change");
@@ -251,6 +260,7 @@ var createTaskActions = function (taskId) {
 
     }
     return actionContainerEl;
+
 
 };
 
@@ -281,7 +291,7 @@ var taskStatusChangeHandler = function (event) {
             tasks[i].status = statusValue;
         }
     }
-    console.log(tasks);
+    //console.log(tasks);
 
     //save to local
     saveTasks();
@@ -292,9 +302,9 @@ var saveTasks = function () {
 }
 
 var loadTasks = function () {
-    debugger;
+
     //reassign tasks variable then retrieve data from localStorage
-    var savedtasks = localStorage.getItem("tasks");
+    var savedTasks = localStorage.getItem("tasks");
     console.log(savedTasks);
 
     //-------savedTasks undefined???
@@ -305,12 +315,13 @@ var loadTasks = function () {
     //else load up saved tasks?
 
     //parse into array of objects
-    savedtasks = JSON.parse(savedTasks);
+    savedTasks = JSON.parse(savedTasks);
 
     //loop through savedTasks array
-    for (var i = 0; i < savedtasks.length; i++) {
+    for (var i = 0; i < savedTasks.length; i++) {
         //pass each task object into the 'createTaskEl() function
-        createTaskEl(savedtasks[i]);
+        createTaskEl(savedTasks[i]);
+        console.log(savedTasks[i]);
     }
 };
 // console.log(loadTasks);
