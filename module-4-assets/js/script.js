@@ -201,6 +201,7 @@ var createTaskEl = function (taskDataObj) {
         tasksCompletedEl.appendChild(listItemEl);
     }
     //console.dir(listItemEl);
+    //position works but dropdown doesnt match with space
 
     taskDataObj.id = taskIdCounter;
 
