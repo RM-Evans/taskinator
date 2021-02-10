@@ -115,7 +115,7 @@ var taskFormHandler = function () {
 
 
     if (!taskNameInput || !taskTypeInput) {
-        alert("Fill out the task form, idiot!!!!");
+        alert("Fill out the task form, silly!!!!");
         return false;
     }
 
